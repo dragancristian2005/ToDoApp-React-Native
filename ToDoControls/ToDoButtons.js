@@ -1,0 +1,21 @@
+import {StyleSheet, Text, TouchableOpacity} from "react-native";
+
+export default function ToDoButtons({text, addToDo, clearToDo}) {
+    return (
+        <TouchableOpacity style = {styles.btn} onPress={text === "Add Task" ? addToDo : clearToDo}>
+            <Text style={styles.btnText}>{text}</Text>
+        </TouchableOpacity>
+    )
+}
+
+const styles = StyleSheet.create({
+    btnText: {
+        fontSize: 15,
+        fontFamily:"Verdana",
+    },
+    btn: {
+        backgroundColor:"antiquewhite",
+        padding:10,
+        borderRadius:10,
+    }
+})
