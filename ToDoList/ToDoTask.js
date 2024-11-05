@@ -1,7 +1,7 @@
 import {StyleSheet, Text, TextInput, TouchableOpacity, View} from "react-native";
 import {useState} from "react";
 
-export default function ToDoTask({removeToDoTask, id}) {
+export default function ToDoTask({removeToDoTask,id}) {
     const [buttonColor, setButtonColor] = useState("#ccc");
 
     const toggleColor = () => {
@@ -10,16 +10,16 @@ export default function ToDoTask({removeToDoTask, id}) {
     }
 
     return (
-        <View style = {styles.taskContainer}>
+        <View style = {styles.taskContainer} id={id}>
             <TouchableOpacity style = {[styles.taskToggleBtn, {backgroundColor: buttonColor}]}
                               onPress={toggleColor}
             ><Text style = {{fontWeight:"bold"}}>✓</Text></TouchableOpacity>
 
             <TextInput style={styles.textInput} placeholder={"Add a new task"}></TextInput>
 
-            <TouchableOpacity style = {styles.taskRemoveBtn} onPress={()=>removeToDoTask(id)}><Text style={{fontWeight:"bold"}}>X</Text></TouchableOpacity>
+            <TouchableOpacity style = {styles.taskRemoveBtn} onPress={() => removeToDoTask(id)}><Text style={{fontWeight:"bold"}}>X</Text></TouchableOpacity>
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
