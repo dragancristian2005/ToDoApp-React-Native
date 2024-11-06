@@ -17,6 +17,10 @@ export default function ToDoTask({removeToDoTask,id}) {
 
             <TextInput style={styles.textInput} placeholder={"Add a new task"}></TextInput>
 
+            {/*<TouchableOpacity style = {styles.taskDetailsBtn} onPress={}>*/}
+            {/*    <Text style = {styles.infoText}>ⓘ</Text>*/}
+            {/*</TouchableOpacity>*/}
+
             <TouchableOpacity style = {styles.taskRemoveBtn} onPress={() => removeToDoTask(id)}><Text style={{fontWeight:"bold"}}>X</Text></TouchableOpacity>
         </View>
     );
@@ -31,7 +35,7 @@ const styles = StyleSheet.create({
         marginTop:10
     },
     textInput: {
-        width:"75%",
+        width:"65%",
         height:"100%",
         borderRadius:10,
         backgroundColor:"white",
@@ -60,5 +64,16 @@ const styles = StyleSheet.create({
         borderRadius:50,
         justifyContent:"center",
         alignItems:"center",
+    },
+    taskDetailsBtn: {
+        backgroundColor:"#ccc",
+        width:"10%",
+        borderRadius:50,
+        justifyContent:"center",
+        alignItems:"center",
+    },
+    infoText: {
+        fontSize:30,
+        textAlign: "center",
     }
 })

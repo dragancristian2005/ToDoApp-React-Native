@@ -12,10 +12,12 @@ const styles = StyleSheet.create({
     btnText: {
         fontSize: 15,
         fontFamily:"Verdana",
+        color:'white',
+        fontWeight:"bold",
     },
     btn: {
-        backgroundColor:"antiquewhite",
-        padding:10,
+        backgroundColor:"#8181fa",
+        padding:12,
         borderRadius:10,
     }
 })
