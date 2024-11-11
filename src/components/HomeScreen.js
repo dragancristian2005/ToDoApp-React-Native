@@ -1,4 +1,3 @@
-import { useState } from "react";
 import * as React from "react";
 import HScreenElements from "./HScreenElements";
 import { createStackNavigator } from "@react-navigation/native/src/__stubs__/createStackNavigator";

@@ -1,16 +1,17 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import * as React from "react";
+import KContainer from "./KContainer";
 
 const TaskInfo = ({ navigation }) => {
   return (
-    <View style={styles.container}>
+    <KContainer>
       <TouchableOpacity
         onPress={() => navigation.navigate("TaskList")}
         style={styles.backBtn}
       >
         <Text style={styles.backBtnTxt}>←Back</Text>
       </TouchableOpacity>
-    </View>
+    </KContainer>
   );
 };
 
@@ -18,7 +19,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    width: "100%",
   },
   backBtn: {
     backgroundColor: "#8181fa",
@@ -26,6 +26,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     borderRadius: 10,
     alignItems: "flex-start",
+    width: "20%",
+    marginLeft: 10,
+    marginTop: 10,
   },
   backBtnTxt: {
     color: "white",
