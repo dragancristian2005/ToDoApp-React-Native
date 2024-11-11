@@ -1,79 +1,101 @@
-import {StyleSheet, Text, TextInput, TouchableOpacity, View} from "react-native";
-import {useState} from "react";
+import {
+  Button,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { useState } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/native/src/__stubs__/createStackNavigator";
 
-export default function ToDoTask({removeToDoTask,id}) {
-    const [buttonColor, setButtonColor] = useState("#ccc");
+export default function ToDoTask({ navigation, removeToDoTask, id }) {
+  const [buttonColor, setButtonColor] = useState("#ccc");
 
-    const toggleColor = () => {
-        buttonColor === "#ccc" ?
-            setButtonColor("#a0e7ff") : setButtonColor("#ccc");
-    }
+  const toggleColor = () => {
+    buttonColor === "#ccc" ? setButtonColor("#a0e7ff") : setButtonColor("#ccc");
+  };
 
-    return (
-        <View style = {styles.taskContainer} id={id}>
-            <TouchableOpacity style = {[styles.taskToggleBtn, {backgroundColor: buttonColor}]}
-                              onPress={toggleColor}
-            ><Text style = {{fontWeight:"bold"}}>✓</Text></TouchableOpacity>
+  return (
+    <View style={styles.taskContainer} id={id}>
+      <TouchableOpacity
+        style={[styles.taskToggleBtn, { backgroundColor: buttonColor }]}
+        onPress={toggleColor}
+      >
+        <Text style={{ fontWeight: "bold" }}>✓</Text>
+      </TouchableOpacity>
 
-            <TextInput style={styles.textInput} placeholder={"Add a new task"}></TextInput>
+      <TextInput
+        style={styles.textInput}
+        placeholder={"Add a new task"}
+      ></TextInput>
 
-            {/*<TouchableOpacity style = {styles.taskDetailsBtn} onPress={}>*/}
-            {/*    <Text style = {styles.infoText}>ⓘ</Text>*/}
-            {/*</TouchableOpacity>*/}
+      <TouchableOpacity
+        style={styles.taskDetailsBtn}
+        onPress={() => navigation.navigate("TaskInfo")}
+      >
+        <Text style={styles.infoText}>ⓘ</Text>
+      </TouchableOpacity>
 
-            <TouchableOpacity style = {styles.taskRemoveBtn} onPress={() => removeToDoTask(id)}><Text style={{fontWeight:"bold"}}>X</Text></TouchableOpacity>
-        </View>
-    );
+      <TouchableOpacity
+        style={styles.taskRemoveBtn}
+        onPress={() => removeToDoTask(id)}
+      >
+        <Text style={{ fontWeight: "bold" }}>X</Text>
+      </TouchableOpacity>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    taskContainer: {
-        height:40,
-        width: '100%',
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        marginTop:10
-    },
-    textInput: {
-        width:"65%",
-        height:"100%",
-        borderRadius:10,
-        backgroundColor:"white",
-        padding:10,
+  taskContainer: {
+    height: 40,
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    marginTop: 10,
+  },
+  textInput: {
+    width: "65%",
+    height: "100%",
+    borderRadius: 10,
+    backgroundColor: "white",
+    padding: 10,
 
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 1,
-        },
-        shadowOpacity: 0.22,
-        shadowRadius: 2.22,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
 
-        elevation: 3,
-    },
-    taskToggleBtn: {
-        width:"10%",
-        height:"100%",
-        borderRadius:50,
-        justifyContent:"center",
-        alignItems:"center",
-    },
-    taskRemoveBtn: {
-        backgroundColor:"#f35e5e",
-        width:"10%",
-        borderRadius:50,
-        justifyContent:"center",
-        alignItems:"center",
-    },
-    taskDetailsBtn: {
-        backgroundColor:"#ccc",
-        width:"10%",
-        borderRadius:50,
-        justifyContent:"center",
-        alignItems:"center",
-    },
-    infoText: {
-        fontSize:30,
-        textAlign: "center",
-    }
-})
+    elevation: 3,
+  },
+  taskToggleBtn: {
+    width: "10%",
+    height: "100%",
+    borderRadius: 50,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  taskRemoveBtn: {
+    backgroundColor: "#f35e5e",
+    width: "10%",
+    borderRadius: 50,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  taskDetailsBtn: {
+    backgroundColor: "#ccc",
+    width: "10%",
+    borderRadius: 50,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  infoText: {
+    fontSize: 30,
+    textAlign: "center",
+  },
+});

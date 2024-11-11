@@ -1,19 +1,17 @@
-import {ScrollView, StyleSheet} from "react-native";
-import ToDoTask from "./ToDoTask";
+import { createStackNavigator } from "@react-navigation/native/src/__stubs__/createStackNavigator";
+import ToDoListStack from "../src/components/ToDoListStack";
+import TaskInfo from "../src/components/TaskInfo";
+import * as React from "react";
 
-export default function ToDoList({toDo}) {
-    return(
-        <ScrollView style = {styles.toDoContainer} contentContainerStyle={{paddingBottom:50}}>
-            {toDo.map(comp=>(
-                <ToDoTask key = {comp.key} removeToDoTask={comp.removeToDoTask} id={comp.id}/>
-            ))}
-        </ScrollView>
-    )
+const Stack = createStackNavigator();
+
+export default function ToDoList({ toDo }) {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name={"List"}>
+        {(props) => <ToDoListStack {...props} toDo={toDo} />}
+      </Stack.Screen>
+      <Stack.Screen name={"TaskInfo"} component={TaskInfo} />
+    </Stack.Navigator>
+  );
 }
-
-const styles = StyleSheet.create({
-    toDoContainer: {
-        width:"100%",
-        paddingTop:15,
-    },
-})
