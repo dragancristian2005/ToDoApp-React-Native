@@ -1,46 +1,16 @@
 import { useState } from "react";
-import { View, StyleSheet } from "react-native";
-import ToDoTitle from "../../ToDoTitle/ToDoTitle";
-import ToDoControls from "../../ToDoControls/ToDoControls";
-import ToDoList from "../../ToDoList/ToDoList";
 import * as React from "react";
+import HScreenElements from "./HScreenElements";
+import { createStackNavigator } from "@react-navigation/native/src/__stubs__/createStackNavigator";
+import TaskInfo from "./TaskInfo";
+
+const Stack = createStackNavigator();
 
 export default function HomeScreen() {
-  const [toDo, setTodo] = useState([]);
-  const [count, setCount] = useState(0);
-
-  const addToDo = () => {
-    setTodo([
-      ...toDo,
-      { key: count, removeToDoTask: removeToDoTask, id: count },
-    ]);
-    setCount(count + 1);
-  };
-
-  const clearToDo = () => {
-    setTodo([]);
-  };
-
-  const removeToDoTask = (id) => {
-    setTodo((prevList) => prevList.filter((el) => el.id !== id));
-  };
-
   return (
-    <View style={styles.container}>
-      <ToDoTitle />
-
-      <ToDoControls addToDo={addToDo} clearToDo={clearToDo} />
-
-      <ToDoList toDo={toDo} />
-    </View>
+    <Stack.Navigator>
+      <Stack.Screen name={"TaskList"} component={HScreenElements} />
+      <Stack.Screen name={"TaskDetails"} component={TaskInfo} />
+    </Stack.Navigator>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
