@@ -33,7 +33,7 @@ export default function ToDoTask({ navigation, removeToDoTask, id }) {
 
       <TouchableOpacity
         style={styles.taskDetailsBtn}
-        onPress={() => navigation.navigate("TaskInfo")}
+        onPress={() => navigation.navigate("TaskDetails")}
       >
         <Text style={styles.infoText}>ⓘ</Text>
       </TouchableOpacity>

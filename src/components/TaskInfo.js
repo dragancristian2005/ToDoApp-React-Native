@@ -5,7 +5,7 @@ const TaskInfo = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity
-        onPress={() => navigation.navigate("List")}
+        onPress={() => navigation.navigate("TaskList")}
         style={styles.backBtn}
       >
         <Text style={styles.backBtnTxt}>←Back</Text>
@@ -18,7 +18,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "",
     width: "100%",
   },
   backBtn: {
