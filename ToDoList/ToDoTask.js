@@ -1,21 +1,75 @@
 import {
-  Button,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
-import { useState } from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/native/src/__stubs__/createStackNavigator";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useEffect, useState } from "react";
 
 export default function ToDoTask({ navigation, removeToDoTask, id }) {
   const [buttonColor, setButtonColor] = useState("#ccc");
+  const [taskName, setTaskName] = useState("");
+
+  useEffect(() => {
+    const loadColor = async () => {
+      try {
+        const storedColor = await AsyncStorage.getItem(`buttonColor-${id}`);
+        if (storedColor !== null) {
+          setButtonColor(storedColor);
+        }
+      } catch (error) {
+        console.error("Failed to store buttonColor", error);
+      }
+    };
+    loadColor();
+  }, [id]); /// get button color
+
+  useEffect(() => {
+    const saveColor = async () => {
+      try {
+        await AsyncStorage.setItem(`buttonColor-${id}`, buttonColor);
+      } catch (error) {
+        console.log("Failed to set buttonColor", error);
+      }
+    };
+
+    const timeout = setTimeout(() => {
+      saveColor();
+    }, 500);
+
+    return () => clearTimeout(timeout);
+  }, [buttonColor, id]); ///set button color
+
+  useEffect(() => {
+    const loadTaskName = async () => {
+      try {
+        const storedTaskName = await AsyncStorage.getItem(`taskName-${id}`);
+        if (storedTaskName !== null) {
+          setTaskName(storedTaskName);
+        }
+      } catch (error) {
+        console.error("Failed to load taskName", error);
+      }
+    };
+    loadTaskName();
+  }, [id]); /// get task name
+
+  const saveTaskName = async (text) => {
+    try {
+      setTaskName(text);
+      await AsyncStorage.setItem(`taskName-${id}`, text);
+    } catch (error) {
+      console.error("Failed to set taskName", error);
+    }
+  };
 
   const toggleColor = () => {
-    buttonColor === "#ccc" ? setButtonColor("#a0e7ff") : setButtonColor("#ccc");
+    setButtonColor((prevColor) => (prevColor === "#ccc" ? "#a0e7ff" : "#ccc"));
   };
+
+  // console.log(id);
 
   return (
     <View style={styles.taskContainer} id={id}>
@@ -29,11 +83,13 @@ export default function ToDoTask({ navigation, removeToDoTask, id }) {
       <TextInput
         style={styles.textInput}
         placeholder={"Add a new task"}
+        value={taskName}
+        onChangeText={saveTaskName}
       ></TextInput>
 
       <TouchableOpacity
         style={styles.taskDetailsBtn}
-        onPress={() => navigation.navigate("TaskDetails")}
+        onPress={() => navigation.navigate("TaskDetails", { id: id })}
       >
         <Text style={styles.infoText}>ⓘ</Text>
       </TouchableOpacity>
