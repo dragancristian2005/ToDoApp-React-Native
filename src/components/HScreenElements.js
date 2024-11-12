@@ -1,13 +1,13 @@
 import ToDoTitle from "../../ToDoTitle/ToDoTitle";
 import ToDoControls from "../../ToDoControls/ToDoControls";
 import ToDoList from "../../ToDoList/ToDoList";
-import * as React from "react";
 import { StyleSheet, View } from "react-native";
-import { useState } from "react";
+import React, { useContext } from "react";
+import { AppContext } from "./AppContext";
 
 const HScreenElements = ({ navigation }) => {
-  const [toDo, setTodo] = useState([]);
-  const [count, setCount] = useState(0);
+  const { toDo, setTodo } = useContext(AppContext);
+  const { count, setCount } = useContext(AppContext);
 
   const addToDo = async () => {
     setTodo([
