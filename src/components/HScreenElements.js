@@ -9,7 +9,7 @@ const HScreenElements = ({ navigation }) => {
   const [toDo, setTodo] = useState([]);
   const [count, setCount] = useState(0);
 
-  const addToDo = () => {
+  const addToDo = async () => {
     setTodo([
       ...toDo,
       { key: count, removeToDoTask: removeToDoTask, id: count },
@@ -25,6 +25,8 @@ const HScreenElements = ({ navigation }) => {
   const removeToDoTask = (id) => {
     setTodo((prevList) => prevList.filter((el) => el.id !== id));
   };
+
+  console.log(toDo);
 
   return (
     <View style={styles.container}>

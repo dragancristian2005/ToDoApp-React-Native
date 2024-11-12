@@ -7,7 +7,7 @@ const Stack = createStackNavigator();
 
 export default function HomeScreen() {
   return (
-    <Stack.Navigator initialRouteName={"TaskList"}>
+    <Stack.Navigator>
       <Stack.Screen name={"TaskList"} component={HScreenElements} />
       <Stack.Screen name={"TaskDetails"} component={TaskInfo} />
     </Stack.Navigator>
