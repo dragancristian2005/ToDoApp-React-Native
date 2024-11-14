@@ -24,7 +24,7 @@ export default function ToDoTitle() {
       setTitle(text);
       await AsyncStorage.setItem("title", text);
     } catch (error) {
-      console.error("Failed to store titel", error);
+      console.error("Failed to store title", error);
     }
   };
 

@@ -14,7 +14,13 @@ const HScreenElements = ({ navigation }) => {
       try {
         const storedToDo = await AsyncStorage.getItem("toDo");
         if (storedToDo !== null) {
-          setTodo(JSON.parse(storedToDo));
+          const newToDo = JSON.parse(storedToDo).map((item) => {
+            return {
+              ...item,
+              removeToDoTask: removeToDoTask,
+            };
+          });
+          setTodo(newToDo);
         }
       } catch (error) {
         console.error("Failed to load stored toDo", error);
