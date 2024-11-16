@@ -1,10 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { StyleSheet, Text, TextInput, TouchableOpacity } from "react-native";
 import * as React from "react";
 import KContainer from "./KContainer";
 import { useEffect, useState } from "react";

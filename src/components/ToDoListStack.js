@@ -9,7 +9,7 @@ const ToDoListStack = ({ navigation, toDo }) => {
     >
       {toDo.map((comp) => (
         <ToDoTask
-          key={comp.key}
+          key={`${comp.key}`}
           removeToDoTask={comp.removeToDoTask}
           id={comp.id}
           navigation={navigation}

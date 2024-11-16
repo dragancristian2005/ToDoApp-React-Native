@@ -84,10 +84,7 @@ const HScreenElements = ({ navigation }) => {
   };
 
   const addToDo = async () => {
-    setTodo([
-      ...toDo,
-      { key: count, removeToDoTask: removeToDoTask, id: count },
-    ]);
+    setTodo([...toDo, { key: count, removeToDoTask, id: count }]);
 
     setCount(count + 1);
   };

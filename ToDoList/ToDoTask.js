@@ -69,10 +69,8 @@ export default function ToDoTask({ navigation, removeToDoTask, id }) {
     setButtonColor((prevColor) => (prevColor === "#ccc" ? "#a0e7ff" : "#ccc"));
   };
 
-  // console.log(id);
-
   return (
-    <View style={styles.taskContainer} id={id}>
+    <View style={styles.taskContainer} id={`${id}`}>
       <TouchableOpacity
         style={[styles.taskToggleBtn, { backgroundColor: buttonColor }]}
         onPress={toggleColor}
