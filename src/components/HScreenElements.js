@@ -27,7 +27,7 @@ const HScreenElements = ({ navigation }) => {
       }
     };
     loadToDo();
-  }, []); ///load stored toDo async
+  }, []);
 
   useEffect(() => {
     const saveToDo = async () => {
@@ -38,7 +38,7 @@ const HScreenElements = ({ navigation }) => {
       }
     };
     saveToDo();
-  }, [toDo]); ///save async toDo
+  }, [toDo]);
 
   useEffect(() => {
     const loadCount = async () => {
@@ -52,7 +52,7 @@ const HScreenElements = ({ navigation }) => {
       }
     };
     loadCount();
-  }, []); /// load stored count async
+  }, []);
 
   useEffect(() => {
     const saveCount = async () => {
@@ -63,7 +63,7 @@ const HScreenElements = ({ navigation }) => {
       }
     };
     saveCount();
-  }, [count]); ///save async count
+  }, [count]);
 
   const clearStoredCount = async () => {
     try {
@@ -72,7 +72,7 @@ const HScreenElements = ({ navigation }) => {
     } catch (error) {
       console.error("Failed to clear count from storage", error);
     }
-  }; ///clear stored count
+  };
 
   const clearStoredToDo = async () => {
     try {

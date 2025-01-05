@@ -24,7 +24,7 @@ export default function ToDoTask({ navigation, removeToDoTask, id }) {
       }
     };
     loadColor();
-  }, [id]); /// get button color
+  }, [id]);
 
   useEffect(() => {
     const saveColor = async () => {
@@ -40,7 +40,7 @@ export default function ToDoTask({ navigation, removeToDoTask, id }) {
     }, 500);
 
     return () => clearTimeout(timeout);
-  }, [buttonColor, id]); ///set button color
+  }, [buttonColor, id]);
 
   useEffect(() => {
     const loadTaskName = async () => {
@@ -54,7 +54,7 @@ export default function ToDoTask({ navigation, removeToDoTask, id }) {
       }
     };
     loadTaskName();
-  }, [id]); /// get task name
+  }, [id]);
 
   const saveTaskName = async (text) => {
     try {

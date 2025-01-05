@@ -8,7 +8,6 @@ export default function Profile() {
   const [lastName, setLastName] = useState("");
   const [age, setAge] = useState("");
 
-  ///set firstName in storage
   const saveFirstName = async (text) => {
     try {
       setFirstName(text);
@@ -18,7 +17,6 @@ export default function Profile() {
     }
   };
 
-  ///set lastName in storage
   const saveLastName = async (text) => {
     try {
       setLastName(text);
@@ -28,7 +26,6 @@ export default function Profile() {
     }
   };
 
-  ///set age in storage
   const saveAge = async (text) => {
     try {
       setAge(text);
@@ -38,7 +35,6 @@ export default function Profile() {
     }
   };
 
-  ///load firstName from storage
   useEffect(() => {
     const loadFirstName = async () => {
       try {
@@ -53,7 +49,6 @@ export default function Profile() {
     loadFirstName();
   }, []);
 
-  ///load lastName from storage
   useEffect(() => {
     const loadLastName = async () => {
       try {
@@ -68,7 +63,6 @@ export default function Profile() {
     loadLastName();
   }, []);
 
-  ///load age from storage
   useEffect(() => {
     const saveAge = async () => {
       try {
